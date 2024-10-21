@@ -49,8 +49,14 @@ function buyThing(x,y){
 // console.log(game.money)
 // buyThing(0,2)
 // console.log(game.ingredients)
+let z = ""
+while (z !== "done") {
+
+
+
 console.log(game.money)
 console.log(game.ingredients)
+
 
 const order = prompt('What do you want to buy? ');
 
@@ -80,12 +86,16 @@ if (order.toLowerCase() === 'sauce') {
         buyThing(5,newStock)
 } else if (order.toLowerCase() === "done") {
         console.log(`Going to dinner!`)
+        z = "done"
 } else {
     console.log("error")
 }
+
 console.log(game.money)
 
 console.log(game.ingredients)
+}
+console.log("exit works")
 /*
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
