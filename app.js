@@ -95,8 +95,9 @@ console.log(game.money)
 
 console.log(game.ingredients)
 }
+
 console.log("exit works")
-/*
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -113,5 +114,52 @@ function getRandomInt(max) {
     }
  }
  populateOrders();
- console.log(game.foodOrder)
-*/
+ //console.log(isNaN(game.meals[0].sellPrice));
+ 
+
+ function makeFood(x){
+    if (x === 0 
+        && game.ingredients[0].stock > 0 
+        && game.ingredients[1].stock > 0 
+        && game.ingredients[2].stock > 0) {
+        // ingredients for pizza
+        game.ingredients[0].stock--;
+        game.ingredients[1].stock--;
+        game.ingredients[2].stock--;        
+        game.money += Number(game.meals[0].sellPrice);
+
+    }else if(x === 1 
+        && game.ingredients[1].stock > 0 
+        && game.ingredients[3].stock > 0 
+        && game.ingredients[5].stock > 0)
+    {
+        // ingredients for sub
+        game.ingredients[1].stock--;
+        game.ingredients[3].stock--;
+        game.ingredients[5].stock--;
+        game.money += Number(game.meals[1].sellPrice);
+
+    }
+    else if( x === 2 
+        && game.ingredients[0].stock > 0 
+        && game.ingredients[3].stock > 0 
+        && game.ingredients[4].stock > 0)
+    {
+        // ingredients for pasta
+        game.ingredients[0].stock--;
+        game.ingredients[3].stock--;
+        game.ingredients[4].stock--;   
+        game.money += Number(game.meals[2].sellPrice);
+
+    }
+ }
+ //console.log(game.foodOrder);
+ console.log(game.ingredients);
+ console.log(game.money);
+
+ for (let i= 0; i < 20; i++) {
+    //console.log(game.foodOrder.pop());    
+     makeFood(game.foodOrder.pop());
+    }
+    console.log(game.ingredients);
+    console.log(game.money );
