@@ -14,7 +14,6 @@ const username = prompt('What is your name? ');
 // let oregano = 10
 // let noodles = 5
 // let bread = 5
-let money = 200
 
 const game = {
     ingredients: [
@@ -31,37 +30,63 @@ const game = {
     {name: "pizza", sellPrice: 10},
     {name: "sub", sellPrice: 10},
     {name: "pasta", sellPrice: 10}
-]
+],
+
+    money: 200
+
     }
 
 console.log(`\nGood morning ${username}!\n`);
 console.log(`Its's time to buy ingredients!`);
-console.log(`[You have $ ${money} left.]\n`);
+console.log(`[You have $ ${game.money} left.]\n`);
 console.log(`You have: \n Sauce: ${game.ingredients[0].stock}, \n Meat: ${game.ingredients[1].stock}, \n Dough: ${game.ingredients[2].stock}, \n Oregano: ${game.ingredients[3].stock}, \n Noodles: ${game.ingredients[4].stock}, \n Bread: ${game.ingredients[5].stock}`)
+
+function buyThing(x,y){
+    game.ingredients[x].stock = game.ingredients[x].stock+ Number(y);
+    game.money = game.money - (game.ingredients[x].price * Number(y))
+}
+// console.log(game.ingredients)
+// console.log(game.money)
+// buyThing(0,2)
+// console.log(game.ingredients)
+console.log(game.money)
+console.log(game.ingredients)
 
 const order = prompt('What do you want to buy? ');
 
-if (order === 'sauce') {
+if (order.toLowerCase() === 'sauce') {
     console.log(`Sauce cost ${game.ingredients[0].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else if (order === 'meat') {
+        buyThing(0,newStock)
+} else if (order.toLowerCase() === 'meat') {
     console.log(`Meat cost ${game.ingredients[1].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else if (order === 'dough') {
+        buyThing(1,newStock)
+} else if (order.toLowerCase() === 'dough') {
     console.log(`Dough cost ${game.ingredients[2].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else if (order === 'oregano') {
+        buyThing(2,newStock)
+} else if (order.toLowerCase() === 'oregano') {
     console.log(`Oregano cost ${game.ingredients[3].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else if (order === 'noodles') {
+        buyThing(3,newStock)
+} else if (order.toLowerCase() === 'noodles') {
     console.log(`Noddles cost ${game.ingredients[4].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else if (order === 'bread') {
+        buyThing(4,newStock)
+} else if (order.toLowerCase() === 'bread') {
     console.log(`Bread cost ${game.ingredients[5].price}`) 
         const newStock = prompt( `How many do you need? `)
-} else (order === done)
+        buyThing(5,newStock)
+} else if (order.toLowerCase() === "done") {
         console.log(`Going to dinner!`)
+} else {
+    console.log("error")
+}
+console.log(game.money)
 
+console.log(game.ingredients)
+/*
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -79,3 +104,4 @@ function getRandomInt(max) {
  }
  populateOrders();
  console.log(game.foodOrder)
+*/
