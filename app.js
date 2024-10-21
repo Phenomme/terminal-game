@@ -27,7 +27,11 @@ const game = {
 
     ],
     foodOrder: [],
-
+    meals: [
+    {name: "pizza", sellPrice: 10},
+    {name: "sub", sellPrice: 10},
+    {name: "pasta", sellPrice: 10}
+]
     }
 
 console.log(`\nGood morning ${username}!\n`);
@@ -37,5 +41,41 @@ console.log(`You have: \n Sauce: ${game.ingredients[0].stock}, \n Meat: ${game.i
 
 const order = prompt('What do you want to buy? ');
 
-if (order === sauce)
-    console.log(`Sauce cost`)
+if (order === 'sauce') {
+    console.log(`Sauce cost ${game.ingredients[0].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else if (order === 'meat') {
+    console.log(`Meat cost ${game.ingredients[1].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else if (order === 'dough') {
+    console.log(`Dough cost ${game.ingredients[2].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else if (order === 'oregano') {
+    console.log(`Oregano cost ${game.ingredients[3].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else if (order === 'noodles') {
+    console.log(`Noddles cost ${game.ingredients[4].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else if (order === 'bread') {
+    console.log(`Bread cost ${game.ingredients[5].price}`) 
+        const newStock = prompt( `How many do you need? `)
+} else (order === done)
+        console.log(`Going to dinner!`)
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+ 
+ function populateOrders() {
+    for (let i= 0; i < 20; i++) {
+    const removedItem =game.foodOrder.pop()
+    }
+    for  (let i= 0; i < 20; i++) {
+        // game.foodOrder.push(game.meals[getRandomInt(3)]) 
+        //Cut out the middle man, we can just have this be an array of integers 0-2 and reference the meals object
+        game.foodOrder.push(getRandomInt(3))
+    
+    }
+ }
+ populateOrders();
+ console.log(game.foodOrder)
