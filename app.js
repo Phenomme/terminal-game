@@ -17,7 +17,15 @@ const game = {
 
 const prompt = require('prompt-sync')();
 const username = prompt('What is your name? ');
-
+function inventory(){
+    console.log(`\nYou have $${game.money}`);
+    console.log(`You have: \n Sauce: ${game.ingredients[0].stock}, 
+        Meat: ${game.ingredients[1].stock}, 
+        Dough: ${game.ingredients[2].stock}, 
+        Oregano: ${game.ingredients[3].stock}, 
+        Noodles: ${game.ingredients[4].stock}, 
+        Bread: ${game.ingredients[5].stock}`)
+}
 function buyThing(index, orderNumber){
     orderNumber = Number(orderNumber);
     game.ingredients[index].stock += orderNumber;
@@ -78,12 +86,11 @@ function getRandomInt(max) {
  }
  function init(){
 console.log(`Its's time to buy ingredients!\n`);
-console.log(`You have: \n Sauce: ${game.ingredients[0].stock}, \n Meat: ${game.ingredients[1].stock}, \n Dough: ${game.ingredients[2].stock}, \n Oregano: ${game.ingredients[3].stock}, \n Noodles: ${game.ingredients[4].stock}, \n Bread: ${game.ingredients[5].stock}`)
 
 while (orderStatus !== "done") {
     
-    console.log(`\nYou have $${game.money} left.`);
-    console.log(game.ingredients)
+console.log(`\nYou have $${game.money} left.`);
+inventory();
 
 const order = prompt('Type what you want to buy or press \'done\' to exit? ');
 
@@ -114,15 +121,13 @@ if (order.toLowerCase() === 'sauce') {
 } else if (order.toLowerCase() === "done") {
         orderStatus = "done"
 } else {
-    console.log("error")
+    console.log("Sorry! I didn\'t get that, type again!")
 }
 }
-
  }
 
 console.log(`\nGood morning ${username}!\n`);
-
-
+//inventory();
 for (let i = 0; i < 10; i++) {    
 init();
 console.log(`Going to dinner!`)
@@ -137,13 +142,8 @@ console.log(`You sold: `);
 game.meals.forEach(meal => {
     console.log(`${meal.sold} ${meal.name}`);              
 });
-console.log(`\n You have $${game.money}`);
-console.log(`You have: \n Sauce: ${game.ingredients[0].stock}, 
-        Meat: ${game.ingredients[1].stock}, 
-        Dough: ${game.ingredients[2].stock}, 
-        Oregano: ${game.ingredients[3].stock}, 
-        Noodles: ${game.ingredients[4].stock}, 
-        Bread: ${game.ingredients[5].stock}`)
+
 
 console.log('\n A new day begins! yeah here we go...');
+orderStatus = "";
 }      
